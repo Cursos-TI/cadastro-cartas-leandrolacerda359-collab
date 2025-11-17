@@ -14,6 +14,10 @@ int main() {
   int numPontosTuristicos_C1 = 0; int numPontosTuristicos_C2 = 0; //Recebe o total de pontos turísticos informado pelo usuário
   float densPop_C1 = 0; float densPop_C2 = 0; //Armazena o resultado do cálculo de densidade populacional
   float pipPerc_C1 = 0; float pipPerc_C2 = 0; //Armazena o resultado do cálculo do PIb per capita
+  float superPoder_C1 = 0; float superPoder_C2 = 0; //Armazena o 'super-poder' das cartas
+  //Armazenam os resultados das comparações por atributo
+  char result_Populacao[20]; char result_Area[20]; char result_PIB[20]; char result_pontosTur[20];
+  char result_densPop[20]; char result_pibPerc[20]; char result_superPod[20];
 
   // ----- Input --------------------------------------------------------------------------------------------------------
   //Cabeçario
@@ -41,6 +45,7 @@ int main() {
   printf("Insira o total de pontos turísticos: "); scanf("%d",&numPontosTuristicos_C2);
 
   // ----- Processamento --------------------------------------------------------------------------------------------------------
+
   // -> Densidade populacional
   densPop_C1 = (float) populacao_C1 / area_C1;
   densPop_C2 = (float) populacao_C2 / area_C2;
@@ -49,9 +54,44 @@ int main() {
   pipPerc_C1 = (float) pib_C1 / populacao_C1;
   pipPerc_C2 = (float) pib_C2 / populacao_C2;
 
+  // -> Super poder
+  superPoder_C1 = (float) (populacao_C1 + area_C1 + pib_C1 + numPontosTuristicos_C1 + pipPerc_C1) / densPop_C1;
+  superPoder_C2 = (float) (populacao_C2 + area_C2 + pib_C2 + numPontosTuristicos_C2 + pipPerc_C2) / densPop_C2;
+
+
   // ----- Output --------------------------------------------------------------------------------------------------------
+  printf("\n");
   printf("--- *RESULTADO FINAL* ---\n\n");
 
+  //População
+  printf("População: ");
+  if(populacao_C1 > populacao_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  //Area
+  printf("Area: ");
+  if(area_C1 > area_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  //PIB
+  printf("PIB: ");
+  if(pib_C1 > pib_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  //Pontos turisticos
+  printf("Pontos turisticos: ");
+  if(numPontosTuristicos_C1 > numPontosTuristicos_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  //Densidade Populacional
+  printf("Densidade populacional: ");
+  if(densPop_C1 > densPop_C2) {printf("Carta 2 venceu!!!\n");} else {printf("Carta 1 venceu!!!\n");}
+
+  //PIB per capita
+  printf("PIB per capita: ");
+  if(pipPerc_C1 > pipPerc_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  //Super poder
+  printf("Super poder: ");
+  if(superPoder_C1 > superPoder_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  /*
   //Carta1
   printf("- Carta 1:\n");
   printf("Estado: %s\n",estado_C1);
@@ -76,6 +116,7 @@ int main() {
   printf("Pontos turísticos: %d\n",numPontosTuristicos_C2);
   printf("Densidade populacional: %2f\n",densPop_C2);
   printf("PIB per capita: %2f\n",pipPerc_C2);
+  */
 
 return 0;
 
