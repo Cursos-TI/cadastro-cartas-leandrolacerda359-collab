@@ -5,21 +5,22 @@
 int main() {
 
   // ----- Variáveis ----------------------------------------------------------------------------------------------------
-  char estado_C1[25]; char estado_C2[25]; //Recebe o estado informado pelo usuário
-  char codCarta_C1[3]; char codCarta_C2[3]; //Recebe o código da carta informado pelo usuário
-  char cidade_C1[25]; char cidade_C2[25]; //Recebe a cidade informada pelo usuário
-  int populacao_C1 = 0; int populacao_C2 = 0; //Recebe o total da população informado pelo usuário
-  float area_C1 = 0; float area_C2 = 0; //Recebe a área total informada pelo usuário
-  double pib_C1 = 0; double pib_C2 = 0; //Recebe o pib informado pelo usuário
-  int numPontosTuristicos_C1 = 0; int numPontosTuristicos_C2 = 0; //Recebe o total de pontos turísticos informado pelo usuário
-  float densPop_C1 = 0; float densPop_C2 = 0; //Armazena o resultado do cálculo de densidade populacional
-  float pipPerc_C1 = 0; float pipPerc_C2 = 0; //Armazena o resultado do cálculo do PIb per capita
-  float superPoder_C1 = 0; float superPoder_C2 = 0; //Armazena o 'super-poder' das cartas
+  char estado_C1[25], estado_C2[25]; //Recebe o estado informado pelo usuário
+  char codCarta_C1[3], codCarta_C2[3]; //Recebe o código da carta informado pelo usuário
+  char cidade_C1[25], cidade_C2[25]; //Recebe a cidade informada pelo usuário
+  int populacao_C1 = 0, populacao_C2 = 0; //Recebe o total da população informado pelo usuário
+  float area_C1 = 0, area_C2 = 0; //Recebe a área total informada pelo usuário
+  double pib_C1 = 0, pib_C2 = 0; //Recebe o pib informado pelo usuário
+  int numPontosTuristicos_C1 = 0, numPontosTuristicos_C2 = 0; //Recebe o total de pontos turísticos informado pelo usuário
+  float densPop_C1 = 0, densPop_C2 = 0; //Armazena o resultado do cálculo de densidade populacional
+  float pipPerc_C1 = 0, pipPerc_C2 = 0; //Armazena o resultado do cálculo do PIb per capita
+  float superPoder_C1 = 0, superPoder_C2 = 0; //Armazena o 'super-poder' das cartas
   //Armazenam os resultados das comparações por atributo
-  char result_Populacao[20]; char result_Area[20]; char result_PIB[20]; char result_pontosTur[20];
-  char result_densPop[20]; char result_pibPerc[20]; char result_superPod[20];
+  char result_Populacao[20], result_Area[20], result_PIB[20], result_pontosTur[20];
+  char result_densPop[20], result_pibPerc[20], result_superPod[20];
   int opcao; //Guarda a opção selecionada pelo usuário no menu inicial
-  int atributoComparado; //Guarda a opção selecionada pelo usuário  para comparação de atributos
+  int atributoComparado1, atributoComparado2; //Guarda a opção selecionada pelo usuário  para comparação de atributos
+  float somaAtributos1, somaAtributos2; //Armaazena a soma dos atributos das cartas escolhidos pelo usuário
 
   // ----- Input --------------------------------------------------------------------------------------------------------
   //Menu inicial
@@ -54,12 +55,16 @@ int main() {
       printf("Insira o total de pontos turísticos: "); scanf("%d",&numPontosTuristicos_C2);
       //Seleção de atributo
       printf("\n"); 
-      printf("---> Selecione o atributo a ser comparado entre as cartas:\n");
+      printf("---> Selecione os atributos a serem comparados entre as cartas:\n\n");
+      //Atributo1
+      printf("1º Atributo das cartas:\n");
       printf("(4)-População\n"); printf("(5)-Área\n"); printf("(6)-PIB\n"); printf("(7)-Pontos turísticos\n");
       printf("(8)-Densidade Demográfica\n");
       do {
-        printf("Atributo: "); scanf("%d",&atributoComparado);
-      } while (atributoComparado != 4 && atributoComparado != 5 && atributoComparado != 6 && atributoComparado != 7 && atributoComparado != 8);
+        printf("Atributo: "); scanf("%d",&atributoComparado1);
+      } while (atributoComparado1 != 4 && atributoComparado1 != 5 && atributoComparado1 != 6 && atributoComparado1 != 7 && atributoComparado1 != 8);
+      //Atributo2
+      // ... 
     break;
     //Regras
     case 2:
