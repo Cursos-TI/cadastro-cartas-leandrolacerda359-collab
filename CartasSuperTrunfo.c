@@ -20,7 +20,7 @@ int main() {
   char result_densPop[20], result_pibPerc[20], result_superPod[20];
   int opcao; //Guarda a opção selecionada pelo usuário no menu inicial
   int atributoComparado1, atributoComparado2; //Guarda a opção selecionada pelo usuário  para comparação de atributos
-  float somaAtributos1, somaAtributos2; //Armaazena a soma dos atributos das cartas escolhidos pelo usuário
+  float somaAtributos_c1 = 0, somaAtributos_c2 = 0; //Armaazena a soma dos atributos das cartas escolhidos pelo usuário
 
   // ----- Input --------------------------------------------------------------------------------------------------------
   //Menu inicial
@@ -61,10 +61,15 @@ int main() {
       printf("(4)-População\n"); printf("(5)-Área\n"); printf("(6)-PIB\n"); printf("(7)-Pontos turísticos\n");
       printf("(8)-Densidade Demográfica\n");
       do {
-        printf("Atributo: "); scanf("%d",&atributoComparado1);
+        printf("Atributo 1 (Digite somente valores válidos acima): "); scanf("%d",&atributoComparado1);
       } while (atributoComparado1 != 4 && atributoComparado1 != 5 && atributoComparado1 != 6 && atributoComparado1 != 7 && atributoComparado1 != 8);
       //Atributo2
-      // ... 
+      printf("2º Atributo das cartas:\n");
+      printf("(4)-População\n"); printf("(5)-Área\n"); printf("(6)-PIB\n"); printf("(7)-Pontos turísticos\n");
+      printf("(8)-Densidade Demográfica\n");
+      do {
+        printf("Atributo 2 (Digite somente valores válidos acima e sem repetir o atributo 1): "); scanf("%d",&atributoComparado2);
+      } while (atributoComparado2 != 4 && atributoComparado2 != 5 && atributoComparado2 != 6 && atributoComparado2 != 7 && atributoComparado2 != 8 && atributoComparado2 == atributoComparado1);
     break;
     //Regras
     case 2:
@@ -93,83 +98,116 @@ int main() {
   // ----- Output --------------------------------------------------------------------------------------------------------
   printf("\n");
   printf("--- *RESULTADO FINAL* ---\n\n");
+  printf("---> POR ATRIBUTO:\n");
 
-  switch (atributoComparado) {
+  //Resultado da comparação do atributo 1
+  switch (atributoComparado1) {
     //População
     case 4:
+      printf("1º ATRIBUTO:\n");
       printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
       printf("População:\n"); printf("Carta 1: %d",populacao_C1); printf(" X Carta 2: %d",populacao_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(populacao_C1 > populacao_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += populacao_C1; somaAtributos_c2 += populacao_C2; //Acumula a soma dos atributos das duas cartas
     break;
     //Area
     case 5:
+      printf("1º ATRIBUTO:\n");
       printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
       printf("Area:\n"); printf("Carta 1: %2f",area_C1); printf(" X Carta 2: %2f",area_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(area_C1 > area_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += area_C1; somaAtributos_c2 += area_C2; //Acumula a soma dos atributos das duas cartas
     break;
     //PIB
     case 6:
+      printf("1º ATRIBUTO:\n");
       printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
       printf("PIB:\n"); printf("Carta 1: %lf",pib_C1); printf(" X Carta 2: %lf",pib_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(pib_C1 > pib_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += pib_C1; somaAtributos_c2 += pib_C2; //Acumula a soma dos atributos das duas cartas
     break;
     //Pontos turisticos
     case 7:
+      printf("1º ATRIBUTO:\n");
       printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
       printf("Pontos turisticos:\n"); printf("Carta 1: %d",numPontosTuristicos_C1); printf(" X Carta 2: %d",numPontosTuristicos_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(numPontosTuristicos_C1 > numPontosTuristicos_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += numPontosTuristicos_C1; somaAtributos_c2 += numPontosTuristicos_C1; //Acumula a soma dos atributos das duas cartas
     break;
     //Densidade Populacional
     case 8:
+      printf("1º ATRIBUTO:\n");
       printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
       printf("Densidade populacional:\n"); printf("Carta 1: %2f",densPop_C1); printf(" X Carta 2: %2f",densPop_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(densPop_C1 > densPop_C2) {printf("Carta 2 venceu!!!\n");} else {printf("Carta 1 venceu!!!\n");}
+      somaAtributos_c1 += densPop_C1; somaAtributos_c2 += densPop_C1; //Acumula a soma dos atributos das duas cartas
     break;
-
-    /*
-    //PIB per capita
-    printf("PIB per capita: ");
-    if(pipPerc_C1 > pipPerc_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
-
-    //Super poder
-    printf("Super poder: ");
-    if(superPoder_C1 > superPoder_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
-
-    */
   }
 
-  /*
-  //Carta1
-  printf("- Carta 1:\n");
-  printf("Estado: %s\n",estado_C1);
-  printf("Código: %s\n",codCarta_C1);
-  printf("Cidade: %s\n",cidade_C1);
-  printf("População: %d\n",populacao_C1);
-  printf("Área(m²): %2f\n",area_C1);
-  printf("PIB: %lf\n",pib_C1);
-  printf("Pontos turísticos: %d\n",numPontosTuristicos_C1);
-  printf("Densidade populacional: %2f\n",densPop_C1);
-  printf("PIB per capita: %2f\n",pipPerc_C1);
-  printf("\n"); 
-  
-  //Carta2
-  printf("- Carta 2:\n");
-  printf("Estado: %s\n",estado_C2);
-  printf("Código: %s\n",codCarta_C2);
-  printf("Cidade: %s\n",cidade_C2);
-  printf("População: %d\n",populacao_C2);
-  printf("Área(m²): %2f\n",area_C2);
-  printf("PIB: %lf\n",pib_C2);
-  printf("Pontos turísticos: %d\n",numPontosTuristicos_C2);
-  printf("Densidade populacional: %2f\n",densPop_C2);
-  printf("PIB per capita: %2f\n",pipPerc_C2);
-  */
+  printf("\n");
 
-return 0;
+  //Resultado da comparação do atributo 2
+  switch (atributoComparado2) {
+    //População
+    case 4:
+      printf("2º ATRIBUTO:\n");
+      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("População:\n"); printf("Carta 1: %d",populacao_C1); printf(" X Carta 2: %d",populacao_C2); printf("\n");
+      printf("---> RESULTADO: ");
+      if(populacao_C1 > populacao_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += populacao_C1; somaAtributos_c2 += populacao_C2; //Acumula a soma dos atributos das duas cartas
+    break;
+    //Area
+    case 5:
+      printf("2º ATRIBUTO:\n");
+      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Area:\n"); printf("Carta 1: %2f",area_C1); printf(" X Carta 2: %2f",area_C2); printf("\n");
+      printf("---> RESULTADO: ");
+      if(area_C1 > area_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += area_C1; somaAtributos_c2 += area_C2; //Acumula a soma dos atributos das duas cartas
+    break;
+    //PIB
+    case 6:
+      printf("2º ATRIBUTO:\n");
+      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("PIB:\n"); printf("Carta 1: %lf",pib_C1); printf(" X Carta 2: %lf",pib_C2); printf("\n");
+      printf("---> RESULTADO: ");
+      if(pib_C1 > pib_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += pib_C1; somaAtributos_c2 += pib_C2; //Acumula a soma dos atributos das duas cartas
+    break;
+    //Pontos turisticos
+    case 7:
+      printf("2º ATRIBUTO:\n");
+      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Pontos turisticos:\n"); printf("Carta 1: %d",numPontosTuristicos_C1); printf(" X Carta 2: %d",numPontosTuristicos_C2); printf("\n");
+      printf("---> RESULTADO: ");
+      if(numPontosTuristicos_C1 > numPontosTuristicos_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+      somaAtributos_c1 += numPontosTuristicos_C1; somaAtributos_c2 += numPontosTuristicos_C1; //Acumula a soma dos atributos das duas cartas
+    break;
+    //Densidade Populacional
+    case 8:
+      printf("2º ATRIBUTO:\n");
+      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Densidade populacional:\n"); printf("Carta 1: %2f",densPop_C1); printf(" X Carta 2: %2f",densPop_C2); printf("\n");
+      printf("---> RESULTADO: ");
+      if(densPop_C1 > densPop_C2) {printf("Carta 2 venceu!!!\n");} else {printf("Carta 1 venceu!!!\n");}
+      somaAtributos_c1 += densPop_C1; somaAtributos_c2 += densPop_C1; //Acumula a soma dos atributos das duas cartas
+    break;
+  }
+
+  printf("\n");
+
+  //Resultado final da rodada
+  printf(" ------> RESULTADO FINAL DA RODADA <------ \n");
+  printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+  printf("Somatória dos atributos:\n"); printf("Carta 1: %2f",somaAtributos_c1); printf(" X Carta 2: %2f",somaAtributos_c2); printf("\n");
+  if(somaAtributos_c1 > somaAtributos_c2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
+
+  return 0;
 
 } 
