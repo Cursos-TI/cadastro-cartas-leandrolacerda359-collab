@@ -2,6 +2,14 @@
 
 // Desafio Super Trunfo - Países - Tema 1 - Cadastro das cartas
 
+// Função auxiliar para remover o \n do final da string da função fgets
+void limparLinha(char *string) {
+    size_t len = strlen(string);
+    if (len > 0 && string[len - 1] == '\n') {
+        string[len - 1] = '\0';
+    }
+}
+
 int main() {
 
   // ----- Variáveis ----------------------------------------------------------------------------------------------------
@@ -36,9 +44,9 @@ int main() {
       //Carta 1
       printf("\n");
       printf("--- INSIRA OS DADOS DA 1ª CARTA:\n"); 
-      printf("Insira o estado: "); fgets(estado_C1,25,stdin); 
-      printf("Insira o código da carta: "); scanf("%s",codCarta_C1); 
-      printf("Insira a cidade: "); scanf("%s",cidade_C1);
+      printf("Insira o estado: "); fgets(estado_C1,25,stdin); limparLinha(estado_C1);
+      printf("Insira o código da carta: "); fgets(codCarta_C1,3,stdin); limparLinha(codCarta_C1);
+      printf("Insira a cidade: "); fgets(cidade_C1,25,stdin); limparLinha(cidade_C1);
       printf("Insira a população total: "); scanf("%d",&populacao_C1);
       printf("Insira a área total em m²: "); scanf("%f",&area_C1);
       printf("Insira o PIB: "); scanf("%lf",&pib_C1);
@@ -46,9 +54,9 @@ int main() {
       //Carta 2
       printf("\n"); 
       printf("--- INSIRA OS DADOS DA 2ª CARTA:\n"); 
-      printf("Insira o estado: "); fgets(estado_C2,25,stdin); 
-      printf("Insira o código da carta: "); scanf("%s",codCarta_C2); 
-      printf("Insira a cidade: "); scanf("%s",cidade_C2);
+      printf("Insira o estado: "); fgets(estado_C2,25,stdin); limparLinha(estado_C2);
+      printf("Insira o código da carta: "); fgets(codCarta_C2,3,stdin); limparLinha(codCarta_C2);
+      printf("Insira a cidade: "); fgets(cidade_C2,25,stdin); limparLinha(cidade_C2);
       printf("Insira a população total: "); scanf("%d",&populacao_C2);
       printf("Insira a área total em m²: "); scanf("%f",&area_C2);
       printf("Insira o PIB: "); scanf("%lf",&pib_C2);
@@ -69,7 +77,7 @@ int main() {
       printf("(8)-Densidade Demográfica\n");
       do {
         printf("Atributo 2 (Digite somente valores válidos acima e sem repetir o atributo 1): "); scanf("%d",&atributoComparado2);
-      } while (atributoComparado2 != 4 && atributoComparado2 != 5 && atributoComparado2 != 6 && atributoComparado2 != 7 && atributoComparado2 != 8 && atributoComparado2 == atributoComparado1);
+      } while (atributoComparado2 != 4 && atributoComparado2 != 5 && atributoComparado2 != 6 && atributoComparado2 != 7 && atributoComparado2 != 8 || atributoComparado2 == atributoComparado1);
     break;
     //Regras
     case 2:
@@ -105,7 +113,7 @@ int main() {
     //População
     case 4:
       printf("1º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("População:\n"); printf("Carta 1: %d",populacao_C1); printf(" X Carta 2: %d",populacao_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(populacao_C1 > populacao_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -114,7 +122,7 @@ int main() {
     //Area
     case 5:
       printf("1º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Area:\n"); printf("Carta 1: %2f",area_C1); printf(" X Carta 2: %2f",area_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(area_C1 > area_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -123,7 +131,7 @@ int main() {
     //PIB
     case 6:
       printf("1º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("PIB:\n"); printf("Carta 1: %lf",pib_C1); printf(" X Carta 2: %lf",pib_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(pib_C1 > pib_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -132,7 +140,7 @@ int main() {
     //Pontos turisticos
     case 7:
       printf("1º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Pontos turisticos:\n"); printf("Carta 1: %d",numPontosTuristicos_C1); printf(" X Carta 2: %d",numPontosTuristicos_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(numPontosTuristicos_C1 > numPontosTuristicos_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -141,7 +149,7 @@ int main() {
     //Densidade Populacional
     case 8:
       printf("1º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Densidade populacional:\n"); printf("Carta 1: %2f",densPop_C1); printf(" X Carta 2: %2f",densPop_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(densPop_C1 > densPop_C2) {printf("Carta 2 venceu!!!\n");} else {printf("Carta 1 venceu!!!\n");}
@@ -156,7 +164,7 @@ int main() {
     //População
     case 4:
       printf("2º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("População:\n"); printf("Carta 1: %d",populacao_C1); printf(" X Carta 2: %d",populacao_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(populacao_C1 > populacao_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -165,7 +173,7 @@ int main() {
     //Area
     case 5:
       printf("2º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Area:\n"); printf("Carta 1: %2f",area_C1); printf(" X Carta 2: %2f",area_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(area_C1 > area_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -174,7 +182,7 @@ int main() {
     //PIB
     case 6:
       printf("2º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("PIB:\n"); printf("Carta 1: %lf",pib_C1); printf(" X Carta 2: %lf",pib_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(pib_C1 > pib_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -183,7 +191,7 @@ int main() {
     //Pontos turisticos
     case 7:
       printf("2º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Pontos turisticos:\n"); printf("Carta 1: %d",numPontosTuristicos_C1); printf(" X Carta 2: %d",numPontosTuristicos_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(numPontosTuristicos_C1 > numPontosTuristicos_C2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
@@ -192,7 +200,7 @@ int main() {
     //Densidade Populacional
     case 8:
       printf("2º ATRIBUTO:\n");
-      printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+      printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
       printf("Densidade populacional:\n"); printf("Carta 1: %2f",densPop_C1); printf(" X Carta 2: %2f",densPop_C2); printf("\n");
       printf("---> RESULTADO: ");
       if(densPop_C1 > densPop_C2) {printf("Carta 2 venceu!!!\n");} else {printf("Carta 1 venceu!!!\n");}
@@ -204,7 +212,7 @@ int main() {
 
   //Resultado final da rodada
   printf(" ------> RESULTADO FINAL DA RODADA <------ \n");
-  printf("Estados --- > %s",estado_C1); printf(" X %s",estado_C2); printf("\n");
+  printf("Cartas --- > %s",codCarta_C1); printf(" X %s",codCarta_C2); printf("\n");
   printf("Somatória dos atributos:\n"); printf("Carta 1: %2f",somaAtributos_c1); printf(" X Carta 2: %2f",somaAtributos_c2); printf("\n");
   if(somaAtributos_c1 > somaAtributos_c2) {printf("Carta 1 venceu!!!\n");} else {printf("Carta 2 venceu!!!\n");}
 
